@@ -1,18 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <title>Deteksi Ekspresi Wajah</title>
-    <link rel="stylesheet" href="../static/style.css" />
+    <title>Deteksi Emosi Real-time</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+        background-color: #f0f0f0;
+      }
+      h1 {
+        color: #333;
+      }
+      #video-feed {
+        border: 2px solid #555;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #000;
+      }
+      .container {
+        margin-top: 30px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Deteksi Ekspresi Wajah</h1>
-    <video id="video" width="48" autoplay></video>
-    <br />
-    <button onclick="capture()">Deteksi Ekspresi</button>
-    <canvas id="canvas" width="300" height="225" style="display: none"></canvas>
-    <p id="result"></p>
-
-    <script src="../static/script.js"></script>
+    <h1>Deteksi Emosi Real-time</h1>
+    <div class="container">
+      <img
+        id="video-feed"
+        src="{{ url_for('video_feed') }}"
+        width="640"
+        height="480"
+      />
+    </div>
   </body>
 </html>

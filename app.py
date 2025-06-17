@@ -6,7 +6,7 @@ import base64
 import io
 
 app = Flask(__name__)
-model = tf.keras.models.load_model('./model/model_emosi.keras')  
+model = tf.keras.models.load_model('./model/model_emosi.h5')  
 
 labels = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']  
 
@@ -23,7 +23,7 @@ def predict():
     image = image.resize((48, 48))  
 
     img_array = np.array(image) / 255.0
-    img_array = image.reshape(1, 48, 48, 1)
+    img_array = img_array.reshape(1, 48, 48, 1)
 
     prediction = model.predict(img_array)[0]
     label = labels[np.argmax(prediction)]
